@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import './index.css';
+import { GlobalStyle } from './styled';
 import * as serviceWorker from './serviceWorker';
 import { App, Notfound, Movie, Search }from './containers';
 
@@ -16,7 +16,9 @@ const routing = (
                 <Route component={Notfound} />
             </Switch>
         </Suspense>
+        <GlobalStyle/>
     </Router>
+    
   )
 
 ReactDOM.render(routing, document.getElementById('root'));
