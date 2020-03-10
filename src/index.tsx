@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './index.css';
@@ -8,12 +8,14 @@ import { App, Notfound, Movie, Search }from './containers';
 
 const routing = (
     <Router>
-        <Switch>
-            <Route exact path="/" component={App} />
-            <Route path="/movie/:id" component={Movie} />
-            <Route path="/search/:keyword" component={Search} />
-            <Route component={Notfound} />
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+                <Route exact path="/" component={App} />
+                <Route path="/movie/:id" component={Movie} />
+                <Route path="/search/:keyword" component={Search} />
+                <Route component={Notfound} />
+            </Switch>
+        </Suspense>
     </Router>
   )
 
