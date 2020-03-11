@@ -7,5 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     background: ${Theme.BackgroundColor};
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
+    letter-spacing: 1px;
   }
 `

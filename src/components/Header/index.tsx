@@ -20,7 +20,6 @@ export class Header extends React.Component<HeaderState>{
             <Search/>
             <Location/>
           </HeaderContainer>
-          Filmes
         </header>
       )
     }

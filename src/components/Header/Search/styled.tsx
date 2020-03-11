@@ -11,11 +11,13 @@ export const SearchContainer = styled.div`
     padding-right: 45px;
     box-sizing: border-box;
 
-    input[type="text"]{
+    input[type="text"], input[type="text"]:-webkit-autofill, input[type="text"]:-webkit-autofill:hover, input[type="text"]:-webkit-autofill:focus, input[type="text"]:-internal-autofill-selected {
         appearance: none;
         border: none;
-        background: transparent;
+        background-color: ${Theme.BackgroundColor}!important;
+        -webkit-box-shadow: 0 0 0 30px ${Theme.BackgroundColor} inset;
         color: ${Theme.White};
+        -webkit-text-fill-color: ${Theme.White};
         border-bottom: 1px solid ${Theme.White};
         padding: 10px 0;
         margin-right: 10px;
