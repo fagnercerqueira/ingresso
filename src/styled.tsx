@@ -8,5 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
   }
 `

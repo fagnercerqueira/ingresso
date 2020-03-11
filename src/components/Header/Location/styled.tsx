@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IconArrowDown } from '../../../utils/Icons';
-import Theme from "../../../utils/Theme";
+import Theme from '../../../utils/Theme';
 
 export const LocationContainer = styled.div`
     display: inline-block;

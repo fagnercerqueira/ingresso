@@ -31,6 +31,7 @@ export const FilterContainer = styled.div`
                 vertical-align: middle;
                 font-size: 14px;
                 text-transform: uppercase;
+                cursor: pointer;
             }
             input[type="checkbox"]{
                 vertical-align: middle;

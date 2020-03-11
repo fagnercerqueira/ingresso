@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Theme from "../../utils/Theme";
+import Theme from '../../utils/Theme';
 export const HeaderContainer = styled.div`
     padding: 15px ${Theme.ContainerPadding};
     display: block;
@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
     @media(min-width: 1200px){
 
     }
-    
+
     @media only screen and (max-width: 600px){
         
     }
