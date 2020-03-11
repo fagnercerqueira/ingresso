@@ -8,7 +8,6 @@ export const SearchContainer = styled.div`
     width: 50%;
     text-align: right;
     vertical-align: middle;
-    padding-right: 45px;
     box-sizing: border-box;
 
     input[type="text"], input[type="text"]:-webkit-autofill, input[type="text"]:-webkit-autofill:hover, input[type="text"]:-webkit-autofill:focus, input[type="text"]:-internal-autofill-selected {

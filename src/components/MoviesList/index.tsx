@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
 import { MovieListContainer } from './styled';
+import { Link } from 'react-router-dom';
 
 interface FilterState {
     activeFilters: []
@@ -178,11 +179,22 @@ export class Filter extends React.Component<{}, FilterState>{
     public render() {
         return (
             <MovieListContainer>
-                <h3>Em Cartaz</h3>
+                <div className="title-wrapper">
+                    <h3>Featured Movies</h3>
+                </div>
+                
                 <ul>
-                {elements.map((data, index) => {
-                     return <li key={index}> {data.title} </li>
-                })}
+                    {elements.map((data, index) => {
+                        return <li key={index}>
+                                <Link to="/">
+                                        <figure>
+                                            <img src={data.images[0].url}  alt={data.title}/>
+                                        </figure>
+                                        <h2>{data.title}</h2>
+                                
+                                </Link>
+                            </li>
+                    })}
                 </ul>
             </MovieListContainer>
         )

@@ -6,6 +6,7 @@ export const LocationContainer = styled.div`
     display: inline-block;
     width: 20%;
     vertical-align: middle;
+    text-align: right;
     a{
         text-decoration: none;
         color: ${Theme.White};

@@ -12,7 +12,10 @@ export class Filter extends React.Component<{}, FilterState>{
     public render() {
         return (
             <FilterContainer>
-                <h3>Filmes</h3>
+                <div className="title-wrapper">
+                    <h3>Movies</h3>
+                </div>
+                
                 <ul>
                 {elements.map((value, index) => {
                      return <li key={index}> <label htmlFor={value}>{value}</label> <input type="checkbox" id={value} value={value} /></li>

@@ -43,6 +43,8 @@ export const FilterContainer = styled.div`
                 height: 15px;
                 margin: 0;
                 border: 1px solid ${Theme.White};
+                transition: all .3s ease-in-out;
+                box-shadow: inset 0px 0px 0px 10px ${Theme.BackgroundColor};
                 &:checked{
                     background: ${Theme.White};
                     box-shadow: inset 0px 0px 0px 2px ${Theme.BackgroundColor};

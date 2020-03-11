@@ -1,5 +1,7 @@
 const BackgroundColor: string = '#15161b';
 const White: string = '#ffffff';
+const Orange: string = '#ee6f44';
+const Glow: string = '#192437';
 
 
 /*Grid*/
@@ -10,6 +12,8 @@ const ContainerPadding: string = "15px";
 const Theme = {
     BackgroundColor,
     White,
+    Orange,
+    Glow,
     ContainerLargeWidth,
     ContainerWidth,
     ContainerPadding
