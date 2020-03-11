@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppContainer } from './styled';
-import Header from '../../components/Header'
+import Header from '../../components/Header';
 
 
 function App() {

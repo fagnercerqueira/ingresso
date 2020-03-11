@@ -1,9 +1,13 @@
 import Logo from '../assets/icons/ingresso.svg';
-import Pin from '../assets/icons/pin.svg';
-import Search from '../assets/icons/search.svg';
+import IconPin from '../assets/icons/pin.svg';
+import IconSearch from '../assets/icons/search.svg';
+import IconClose from '../assets/icons/close.svg';
+import IconArrowDown from '../assets/icons/arrow-down.svg';
 
 export {
     Logo,
-    Pin,
-    Search
+    IconPin,
+    IconSearch,
+    IconClose,
+    IconArrowDown
 };

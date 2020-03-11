@@ -1,9 +1,10 @@
 import React from "react";
-import { HeaderContainer, Brand} from './styled';
-import { Logo } from '../../utils/Icons';
-import Search from './Search';
-import Location from './Location';
+import { HeaderContainer, Brand} from "./styled";
+import { Logo } from "../../utils/Icons";
+import Search from "./Search";
+import Location from "./Location";
 import { Link } from "react-router-dom";
+
 interface HeaderState{}
 
 export class Header extends React.Component<HeaderState>{

@@ -1,7 +1,6 @@
 import React from "react";
 import { SearchContainer } from './styled';
 
-
 interface SearchState {
     value: string;
 }
