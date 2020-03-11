@@ -2,6 +2,7 @@ import React from 'react';
 import { AppContainer } from './styled';
 import Header from '../../components/Header';
 import Filter from '../../components/Filter';
+import MoviesList from '../../components/MoviesList';
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <AppContainer>
      <Header />
      <Filter />
-     <span>Filmes</span>
+     <MoviesList />
     </AppContainer>
   );
 }
