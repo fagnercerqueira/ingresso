@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: 1px;
     margin: 0;
     padding: 0;
+    padding-bottom: 300px;
 
     &.movie-item{
       .App-header{
@@ -18,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
         top: 0;
         left: 0;
         width: 100%;
+        z-index: 999;
       }
 
       &:before{
@@ -30,6 +32,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 200px;
         background: ${Theme.BackgroundColor};
         background: linear-gradient(180deg, rgba(21, 22, 27, 1) 0%, rgba(21, 22, 27, 1) 50%, rgba(21, 22, 27, 0) 100%); 
+        z-index: 9;
       }
     }
   }

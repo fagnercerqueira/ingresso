@@ -5,6 +5,7 @@ const GetPoster = (images: [], type: string) =>{
     return poster[0].url;
 };
 
+
 export {
     GetPoster
 };
