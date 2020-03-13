@@ -10,7 +10,7 @@ function App() {
     <AppContainer>
      <Header />
      <Filter />
-     <MoviesList />
+     <MoviesList title="Featured Movies" term=""/>
     </AppContainer>
   );
 }

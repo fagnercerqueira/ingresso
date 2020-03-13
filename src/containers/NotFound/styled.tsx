@@ -33,12 +33,13 @@ export const NotFoundContainer = styled.div`
     }
     h1{
         font-size: 92px;
-        color: ${Theme.White};
+        color: ${Theme.Orange};
         span{
             display: block;
             font-size: 18px;
             margin-top: 15px;
             font-weight: 400;
+            color: ${Theme.White};
         }
     }
     a{

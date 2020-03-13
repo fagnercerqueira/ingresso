@@ -1,9 +1,14 @@
 import React from 'react';
 import { MovieListContainer } from './styled';
-import { Link } from 'react-router-dom';
+import { MovieItem } from './MovieItem';
 
-interface FilterState {
-    activeFilters: []
+interface MovieProps {
+    title: string,
+    term: string
+}
+
+interface MovieState {
+    total: number
 }
 const elements: any[] = [
      {
@@ -175,25 +180,18 @@ const elements: any[] = [
 
 
 
-export class Filter extends React.Component<{}, FilterState>{
+export class Filter extends React.Component<MovieProps, MovieState>{
     public render() {
         return (
             <MovieListContainer>
                 <div className="title-wrapper">
-                    <h3>Featured Movies</h3>
+                    <h3>{this.props.title}</h3>
+                    {this.props.term ? <span>{this.props.term}</span> : ''}
                 </div>
                 
                 <ul>
                     {elements.map((data, index) => {
-                        return <li key={index}>
-                                <Link to="/">
-                                        <figure>
-                                            <img src={data.images[0].url}  alt={data.title}/>
-                                        </figure>
-                                        <h2>{data.title}</h2>
-                                
-                                </Link>
-                            </li>
+                        return <MovieItem data={data} key={index}></MovieItem>
                     })}
                 </ul>
             </MovieListContainer>

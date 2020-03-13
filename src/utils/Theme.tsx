@@ -1,6 +1,7 @@
 const BackgroundColor: string = '#15161b';
 const White: string = '#ffffff';
 const Orange: string = '#ee6f44';
+const Blue: string = '#09f';
 const Glow: string = '#192437';
 
 
@@ -13,6 +14,7 @@ const Theme = {
     BackgroundColor,
     White,
     Orange,
+    Blue,
     Glow,
     ContainerLargeWidth,
     ContainerWidth,

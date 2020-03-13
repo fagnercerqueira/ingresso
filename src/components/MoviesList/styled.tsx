@@ -28,6 +28,7 @@ export const MovieListContainer = styled.div`
             padding-bottom: 15px;
             position: relative;
             vertical-align: top;
+            vertical-align: middle;
     
             &:after{
                 content: '';
@@ -38,6 +39,11 @@ export const MovieListContainer = styled.div`
                 width: 100%;
                 border-bottom: 4px solid ${Theme.Orange};
             }
+        }
+
+        span{
+            vertical-align: middle;
+            margin-left: 15px;
         }
 
         
@@ -56,13 +62,16 @@ export const MovieListContainer = styled.div`
             box-sizing: border-box;
             margin-bottom: 30px;
             a{
+                display: block;
                 text-decoration: none;
+                transition: all .3s ease-in-out;
+                transform: scale(1);
                 
                 &:hover{
+                    transform: scale(1.1);
+
                     figure{
-                        img{
-                            transform: scale(1.1);
-                        }
+                        box-shadow: 0 0 60px 2px ${Theme.Glow};
                     }
                 }
 
@@ -85,8 +94,6 @@ export const MovieListContainer = styled.div`
                         width: 100%;
                         height: auto;
                         vertical-align: top;
-                        transition: all 3s ease-in;
-                        transform: scale(1);
                     }
                 }
             }
