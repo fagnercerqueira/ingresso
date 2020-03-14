@@ -6,7 +6,7 @@ function Search() {
     return (
       <div className="App">
         <Header />
-        <MoviesList title="Search result for: " term="Search term"/>
+        <MoviesList title="Search result for: " term="Bloodshot"/>
       </div>
     );
   }

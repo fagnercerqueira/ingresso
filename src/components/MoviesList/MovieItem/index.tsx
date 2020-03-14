@@ -11,7 +11,7 @@ export class MovieItem extends React.Component<MovieProps, {}>  {
     public render() {
         return (
             <li>
-                <Link to="/">
+                <Link to={`/movie/${this.props.data.urlKey}`}>
                     <figure>
                         <img src={this.props.data.images[0].url} alt={this.props.data.title} />
                     </figure>
