@@ -1,6 +1,6 @@
 import React from "react";
 import { MainContext } from "../../Providers/MainProvider";
-import { ModalContainer } from './styled';
+import { ModalContainer, ModalWrapper, ModalFloat } from './styled';
 
 const MainModal = () => {
 
@@ -9,17 +9,25 @@ const MainModal = () => {
         event.preventDefault()
         mainContext.setCity(cityId)
     }
+    const closeModal = () => {
+        mainContext.closeModal()
+    }
+    console.log('mainContext',mainContext)
     return (
         <ModalContainer className={mainContext.modalIsOpen ? 'visible' : 'hide'}>
-            <span>Choose your location</span>
-            
-            <ul>
-                {
-                    (mainContext.cities || []).map((data:any, index: any) => {
-                        return <li><button onClick={(event: any) => {setCity(event, data.id)}} key={index} >{data.title}</button></li>;
-                    })
-                }
-            </ul>
+            <button className="close-button" onClick={closeModal}>Close</button>
+            <ModalWrapper>
+                <ModalFloat>
+                    <span>Choose your location</span>
+                    <ul>
+                        {
+                            (mainContext.cities || []).map((data:any, index: any) => {
+                                return <li  key={index} className={data.id === mainContext.currentCity ? 'active' : ''}><button onClick={(event: any) => {setCity(event, data.id)}} >{data.title}</button></li>;
+                            })
+                        }
+                    </ul>
+                </ModalFloat>
+            </ModalWrapper>
         </ModalContainer>
     )
 

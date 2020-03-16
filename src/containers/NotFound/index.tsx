@@ -7,8 +7,8 @@ function NotFound() {
       <div className="App">
         <NotFoundContainer>
           <div className="text-wrapper">
-            <h1>Ops! <span>Página não encontrada</span></h1>
-            <Link to="/">Voltar</Link>
+            <h1>Ops! <span>Page not found</span></h1>
+            <Link to="/">Come back</Link>
           </div>
           
 

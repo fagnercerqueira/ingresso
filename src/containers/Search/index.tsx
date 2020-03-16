@@ -10,9 +10,9 @@ interface SearchProps extends RouteComponentProps{
 
 export class Search extends React.Component<SearchProps,{}>{
 
-  constructor(props: SearchProps){
-      super(props);
-  }
+    constructor(props: SearchProps){
+        super(props);
+    }
 
 
     public render(){

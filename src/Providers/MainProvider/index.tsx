@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../../components/Modal'
+import MainModal from '../../components/Modal'
 
 export type MainContextProps = {
     openModal: () => void,
@@ -81,7 +81,6 @@ export class MainProvider extends React.Component<Props, State> {
         fetch(`/v0/templates/highlights/${id}/partnership/home`) 
         .then((response) => response.json())
         .then((response) => {
-            console.log('Results: ', response)
                 this.setState({
                     results: response || []
                 }); 
@@ -90,6 +89,7 @@ export class MainProvider extends React.Component<Props, State> {
 
     setCity = (id: number) => {
         this.getData(id);
+        this.currentCity = id;
     };
 
     setSearchTerm = (text: string) => {
@@ -128,7 +128,7 @@ export class MainProvider extends React.Component<Props, State> {
                     }}
                 >
                     {children}
-                    <Modal /> 
+                    <MainModal/> 
                 </MainContext.Provider>
         );
     }

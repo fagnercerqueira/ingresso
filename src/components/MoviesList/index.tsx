@@ -11,16 +11,8 @@ const MovieList = (props: any) => {
 
     const mainContext = React.useContext(MainContext);
 
-    const click = () => {
-        console.log('context.results', mainContext)
-        mainContext.closeModal();
-    }
-
-
     return (
         <MovieListContainer>
-            <div>Teste</div>
-            <button onClick={click}>Teste</button>
             <div className="title-wrapper">
                 <h3>{title}</h3>
                 {searchTerm ? <span>{searchTerm}</span> : ''}
