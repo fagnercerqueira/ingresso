@@ -3,23 +3,24 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { GlobalStyle } from './styled';
 import * as serviceWorker from './serviceWorker';
-import { App, Notfound, Movie, Search }from './containers';
+import { App, Notfound, Movie, Search } from './containers';
 import { MainProvider } from './Providers/MainProvider/';
 
 const routing = (
     <MainProvider>
-        <Router>
-            <Suspense fallback={<div>Loading...</div>}>
-                    <Switch>
-                        <Route exact path="/" component={App} />
-                        <Route path="/movie/:id" component={Movie} />
-                        <Route path="/search/:keyword" component={Search} />
-                        <Route component={Notfound} />
-                    </Switch>
-            </Suspense>
-            <GlobalStyle/>
-        </Router>
-    </MainProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={App} />
+                    <Route path="/movie/:slug" component={Movie}  render={({match}) => { return match.params.slug }} />
+                    }/>
+                    <Route path="/search/:keyword" component={Search} />
+                    <Route component={Notfound} />
+                </Switch>
+            </Router>
+        <GlobalStyle />
+        </Suspense>
+    </MainProvider >
     
   )
 

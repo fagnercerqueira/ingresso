@@ -1,15 +1,18 @@
-// import React, { createContext, useState, useEffect } from 'react';
 import React from 'react';
-import axios from 'axios';
+import Modal from '../../components/Modal'
 
 export type MainContextProps = {
     openModal: () => void,
     closeModal: () => void,
     getData: (id: number) => void,
-    setCity: () => void,
+    setCity: (id: number) => void,
+    filterMovies: (term: string) => void,
+    setSearchTerm: (term: string) => void,
     modalIsOpen: boolean,
+    filteredResults: [],
     results: [],
-    cities: {},
+    cities: any,
+    searchTerm: string,
     currentCity: number
 }
 
@@ -19,7 +22,9 @@ type Props = {
 }
 
 type State = {
-    modalIsOpen: boolean, 
+    modalIsOpen: boolean,
+    searchTerm: string,
+    filteredResults: [],
     results: []
 }
 
@@ -30,28 +35,39 @@ export class MainProvider extends React.Component<Props, State> {
 
         this.state = {
             modalIsOpen: false,
+            searchTerm: '',
+            filteredResults: [],
             results: []
         };
     }
 
-    cities = {
-        'sao-paulo': {
+    cities = [
+        {
             id: 1,
+            slug: 'sao-paulo',
             title: 'São Paulo'
         },
-        'rio-de-janeiro': {
-            id: 1,
+        {
+            id: 2,
+            slug: 'rio-de-janeiro',
             title: 'Rio de Janeiro'
         }
-    }
+    ]
 
-    results = {}
+    results = []
 
     currentCity = 1
 
     openModal = () => {
         this.setState({
             modalIsOpen: true
+        });
+    };
+
+
+    filterMovies = (param: string) => {
+        this.setState({
+            filteredResults: [],
         });
     };
 
@@ -62,25 +78,30 @@ export class MainProvider extends React.Component<Props, State> {
     };
 
     getData = (id: number) => {
-        let query = id || 1;
-        axios.get(`https://yacdn.org/serve/https://api-content.ingresso.com/v0/templates/highlights/${query}/partnership/home`)
-            .then((response) => {
-                console.log('response',response);
+        fetch(`/v0/templates/highlights/${id}/partnership/home`) 
+        .then((response) => response.json())
+        .then((response) => {
+            console.log('Results: ', response)
                 this.setState({
-                    results: response.data
+                    results: response || []
                 }); 
-            } ).then(data => console.log('data', data))
+        });
     }
 
-    setCity = () => {
+    setCity = (id: number) => {
+        this.getData(id);
+    };
+
+    setSearchTerm = (text: string) => {
+        console.log('text',text)
         this.setState({
-            modalIsOpen: false,
+            searchTerm: text,
         });
     };
 
 
     componentDidMount() {
-        this.getData(1);
+        this.getData(this.currentCity);
     }
 
 
@@ -96,13 +117,18 @@ export class MainProvider extends React.Component<Props, State> {
                         closeModal: this.closeModal,
                         setCity: this.setCity,
                         getData: this.getData,
+                        filterMovies: this.filterMovies,
+                        setSearchTerm: this.setSearchTerm,
                         cities: this.cities,
                         modalIsOpen: this.state.modalIsOpen,
                         results: this.state.results,
+                        filteredResults: this.state.results,
+                        searchTerm: this.state.searchTerm,
                         currentCity: this.currentCity
                     }}
                 >
                     {children}
+                    <Modal /> 
                 </MainContext.Provider>
         );
     }
@@ -111,4 +137,3 @@ export class MainProvider extends React.Component<Props, State> {
 export const MainConsumer = MainContext.Consumer;
 
 
-// {/* <Modal /> */}

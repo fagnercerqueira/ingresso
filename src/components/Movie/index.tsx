@@ -52,7 +52,10 @@ export class MovieItem extends React.Component<MovieProps, MovieState>{
                     <Infos>
                         <h1>{this.state.title}</h1>
                         <p>{this.state.synopsis}</p>
-                        <Trailers trailers={this.state.trailers}></Trailers>
+                        {
+                            this.state.trailers.length > 0 ? <Trailers trailers={this.state.trailers}></Trailers> : false
+                        }
+                        
                     </Infos>
                 </ContentContainer>
 

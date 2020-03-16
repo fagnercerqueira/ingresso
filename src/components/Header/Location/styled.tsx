@@ -7,9 +7,14 @@ export const LocationContainer = styled.div`
     width: 20%;
     vertical-align: middle;
     text-align: right;
-    a{
-        text-decoration: none;
+    button{
         color: ${Theme.White};
+        appearance: none;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 14px;
 
         > span{
             &:after{

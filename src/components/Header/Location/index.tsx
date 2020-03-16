@@ -1,23 +1,25 @@
 import React from "react";
 import { LocationContainer } from './styled';
 import { IconPin } from '../../../utils/Icons';
+import { MainContext } from "../../../Providers/MainProvider";
 
-interface LocationState {
-    active: boolean,
-    current: string
-}
+const Location = () => {
+    
+    const mainContext = React.useContext(MainContext);
 
-export class Location extends React.Component<{}, LocationState>{
-    public render() {
-        return (
-            <LocationContainer>
-                <a href="/" title="Set Location">
-                     <span>Rio de Janeiro</span>
-                    <img src={IconPin} className="location" alt="Location"/>
-                </a>
-            </LocationContainer>
-        )
+    const handleClick = (event: any) =>{
+        event.preventDefault();
+        mainContext.openModal();
     }
+    return (
+        <LocationContainer>
+            <button onClick={handleClick} title="Set Location">
+                <span>Rio de Janeiro</span>
+                <img src={IconPin} className="location" alt="Location" />
+            </button>
+        </LocationContainer>
+    )
+
 }
 
 export default Location;

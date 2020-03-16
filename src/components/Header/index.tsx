@@ -5,9 +5,10 @@ import Search from "./Search";
 import Location from "./Location";
 import { Link } from "react-router-dom";
 
+interface HeaderProps{}
 interface HeaderState{}
 
-export class Header extends React.Component<HeaderState>{
+export class Header extends React.Component<HeaderProps, HeaderState>{
     public render() {
       return  (
         <header className="App-header">

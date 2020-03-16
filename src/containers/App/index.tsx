@@ -10,7 +10,8 @@ function App() {
     <AppContainer>
      <Header />
      <Filter />
-     <MoviesList title="Featured Movies" term=""/>
+     {/* <MoviesList title="Featured Movies" searchTerm=""/> */}
+     <MoviesList title="Featured Movies"/>
     </AppContainer>
   );
 }

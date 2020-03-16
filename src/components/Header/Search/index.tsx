@@ -1,40 +1,33 @@
 import React from "react";
 import { SearchContainer } from './styled';
+import { createBrowserHistory } from 'history';
+import { MainContext } from "../../../Providers/MainProvider";
 
-interface SearchState {
-    value: string;
-}
+const Search = () => {
 
-export class Search extends React.Component<{}, SearchState>{
+    const mainContext = React.useContext(MainContext);
 
-    constructor(props: {}) {
-        super(props);
-        this.state = { value: '' };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    
-    handleChange(event: React.FormEvent<HTMLInputElement>) {
-        this.setState({value: event.currentTarget.value});
-        console.log('State', this.state.value)
+    const handleChange = (event: any) => {
+        mainContext.setSearchTerm(event.target.value);
     }
 
-    handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        alert('Busca: ' + this.state.value);
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const history = createBrowserHistory();
+        history.push(`/search/${mainContext.searchTerm}`);
     }
-    
 
-    public render() {
-        return (
-            <SearchContainer>
-                <form onSubmit={this.handleSubmit}>
-                    <input id="search" type="text" placeholder="Search movie title" value={this.state.value} onChange={this.handleChange} required/>
-                    <input type="submit" value="Search" />
-                </form>
-            </SearchContainer>
-        )
-    }
+
+
+    return (
+        <SearchContainer>
+            <form onSubmit={handleSubmit}>
+                <input id="search" type="text" placeholder="Search movie title"  value={mainContext.searchTerm} onChange={handleChange} required />
+                <input type="submit" value="Search" />
+            </form>
+        </SearchContainer>
+    )
+
 }
 
 export default Search;
