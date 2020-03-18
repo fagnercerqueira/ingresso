@@ -1,29 +1,30 @@
 import React from "react";
 import { FilterContainer } from './styled';
+import { MainContext } from "../../Providers/MainProvider";
 
-interface FilterState {
-    activeFilters: string[]
-}
-const elements: any[] = ['2D', '3D', 'Dub', 'Leg', 'D-box'];
+const Filter = () => {
 
+    const mainContext = React.useContext(MainContext)
 
+    const handleCheckFilter = (event: any) => {
+        mainContext.checkFilter(event.target.value)
+    }
 
-export class Filter extends React.Component<{}, FilterState>{
-    public render() {
-        return (
-            <FilterContainer>
+      
+    return (
+        <FilterContainer>
                 <div className="title-wrapper">
                     <h3>Movies</h3>
                 </div>
                 
                 <ul>
-                {elements.map((value, index) => {
-                     return <li key={index}> <label htmlFor={value}>{value}</label> <input type="checkbox" id={value} value={value} /></li>
+                {mainContext.filters.map((filter: any, index: number) => {
+                     return <li key={index}> <label htmlFor={filter.name}>{filter.name}</label> <input type="checkbox" id={filter.name} value={filter.name} checked={filter.checked} onChange={handleCheckFilter}/></li>
                 })}
                 </ul>
-            </FilterContainer>
-        )
-    }
+        </FilterContainer>
+    )
+
 }
 
-export default Filter;
+export default Filter

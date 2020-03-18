@@ -18,8 +18,6 @@ class Movie extends React.Component<MovieProps, MovieState> {
         this.state = {
             currentMovie: props.match.params.slug
         }
-        console.log('props',props)
-        console.log('Slug',props.match.params.slug);
     }
 
     //Add Body class
@@ -45,7 +43,6 @@ class Movie extends React.Component<MovieProps, MovieState> {
                     (results || []).filter((data: any) => {
                       return data['event'].urlKey === this.state.currentMovie;
                     }).map((data: any, index: number) => {
-                      console.log('data',data)
                       return <MovieItem data={data['event']} key={index}></MovieItem>
                     })
                 )}

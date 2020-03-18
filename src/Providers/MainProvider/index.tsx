@@ -6,11 +6,12 @@ export type MainContextProps = {
     closeModal: () => void,
     getData: (id: number) => void,
     setCity: (id: number) => void,
-    filterMovies: () => void,
+    buildFilters: (id: any) => void,
+    checkFilter: (item: string) => void,
     setSearchTerm: (term: string) => void,
     modalIsOpen: boolean,
-    filteredResults: any,
     results: [],
+    filters: any,
     cities: any,
     searchTerm: string,
     currentCity: number
@@ -24,8 +25,8 @@ type Props = {
 type State = {
     modalIsOpen: boolean,
     searchTerm: string,
-    filteredResults: [],
-    results: []
+    results: [],
+    filters: any
 }
 
 
@@ -36,8 +37,8 @@ export class MainProvider extends React.Component<Props, State> {
         this.state = {
             modalIsOpen: false,
             searchTerm:'',
-            filteredResults: [],
-            results: []
+            results: [],
+            filters: []
         };
     }
 
@@ -65,18 +66,6 @@ export class MainProvider extends React.Component<Props, State> {
     };
 
 
-    filterMovies = () => {
-        // let items = []
-        // let _term = this.state.searchTerm;
-        // let _dataFiltered = (this.state.results || []).filter(function(movie: any) {
-        //     items.push(movie.event.title.includes(_term));
-        // })
-
-        // this.setState({
-        //     filteredResults: _dataFiltered[0]
-        // })
-    };
-
     closeModal = () => {
         this.setState({
             modalIsOpen: false,
@@ -88,10 +77,38 @@ export class MainProvider extends React.Component<Props, State> {
         .then((response) => response.json())
         .then((response) => {
                 this.setState({
-                    results: response || [],
-                    filteredResults: response || []
+                    results: response || []
                 }) 
+
+                this.buildFilters(response)
         })
+    }
+    
+    buildFilters = (data: any) => {
+        let allFilters:any = [];
+        
+        //Get all genres
+        data.map((filters: any) =>  filters.event.genres).map((filter: any) => allFilters.push(...filter))
+
+        let unicFIlters = allFilters.filter((item: string, i: number, ar: any) => ar.indexOf(item) === i ).map((item: any) => {
+            return {name: item, checked: false}
+        })
+
+        this.setState({
+            filters: unicFIlters
+        }) 
+    }
+
+    checkFilter = (item: string) => {
+        let updateFilters = this.state.filters.map((filter: any) => {
+           if (filter.name === item){
+            filter.checked === false ? filter.checked = true : filter.checked = false
+           }
+            return filter
+        })
+        this.setState({
+            filters: updateFilters
+        }) 
     }
 
     setCity = (id: number) => {
@@ -123,12 +140,13 @@ export class MainProvider extends React.Component<Props, State> {
                         closeModal: this.closeModal,
                         setCity: this.setCity,
                         getData: this.getData,
-                        filterMovies: this.filterMovies,
                         setSearchTerm: this.setSearchTerm,
+                        buildFilters: this.buildFilters,
+                        checkFilter: this.checkFilter,
                         cities: this.cities,
                         modalIsOpen: this.state.modalIsOpen,
                         results: this.state.results,
-                        filteredResults: this.state.filteredResults,
+                        filters: this.state.filters,
                         searchTerm: this.state.searchTerm,
                         currentCity: this.currentCity
                     }}
