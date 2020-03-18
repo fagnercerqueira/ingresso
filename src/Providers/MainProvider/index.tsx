@@ -6,17 +6,17 @@ export type MainContextProps = {
     closeModal: () => void,
     getData: (id: number) => void,
     setCity: (id: number) => void,
-    filterMovies: (term: string) => void,
+    filterMovies: () => void,
     setSearchTerm: (term: string) => void,
     modalIsOpen: boolean,
-    filteredResults: [],
+    filteredResults: any,
     results: [],
     cities: any,
     searchTerm: string,
     currentCity: number
 }
 
-export const MainContext = React.createContext<MainContextProps>(null!);
+export const MainContext = React.createContext<MainContextProps>(null!)
 
 type Props = {
 }
@@ -31,11 +31,11 @@ type State = {
 
 export class MainProvider extends React.Component<Props, State> {
     constructor(props: Props) {
-        super(props);
+        super(props)
 
         this.state = {
             modalIsOpen: false,
-            searchTerm: '',
+            searchTerm:'',
             filteredResults: [],
             results: []
         };
@@ -61,20 +61,26 @@ export class MainProvider extends React.Component<Props, State> {
     openModal = () => {
         this.setState({
             modalIsOpen: true
-        });
+        })
     };
 
 
-    filterMovies = (param: string) => {
-        this.setState({
-            filteredResults: [],
-        });
+    filterMovies = () => {
+        // let items = []
+        // let _term = this.state.searchTerm;
+        // let _dataFiltered = (this.state.results || []).filter(function(movie: any) {
+        //     items.push(movie.event.title.includes(_term));
+        // })
+
+        // this.setState({
+        //     filteredResults: _dataFiltered[0]
+        // })
     };
 
     closeModal = () => {
         this.setState({
             modalIsOpen: false,
-        });
+        })
     };
 
     getData = (id: number) => {
@@ -82,26 +88,26 @@ export class MainProvider extends React.Component<Props, State> {
         .then((response) => response.json())
         .then((response) => {
                 this.setState({
-                    results: response || []
-                }); 
-        });
+                    results: response || [],
+                    filteredResults: response || []
+                }) 
+        })
     }
 
     setCity = (id: number) => {
-        this.getData(id);
+        this.getData(id)
         this.currentCity = id;
     };
 
     setSearchTerm = (text: string) => {
-        console.log('text',text)
         this.setState({
             searchTerm: text,
-        });
+        })
     };
 
 
     componentDidMount() {
-        this.getData(this.currentCity);
+        this.getData(this.currentCity)
     }
 
 
@@ -122,7 +128,7 @@ export class MainProvider extends React.Component<Props, State> {
                         cities: this.cities,
                         modalIsOpen: this.state.modalIsOpen,
                         results: this.state.results,
-                        filteredResults: this.state.results,
+                        filteredResults: this.state.filteredResults,
                         searchTerm: this.state.searchTerm,
                         currentCity: this.currentCity
                     }}
@@ -130,7 +136,7 @@ export class MainProvider extends React.Component<Props, State> {
                     {children}
                     <MainModal/> 
                 </MainContext.Provider>
-        );
+        )
     }
 }
 

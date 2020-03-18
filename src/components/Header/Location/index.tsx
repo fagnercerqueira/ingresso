@@ -11,10 +11,17 @@ const Location = () => {
         event.preventDefault();
         mainContext.openModal();
     }
+    
     return (
         <LocationContainer>
             <button onClick={handleClick} title="Set Location">
-                <span>Rio de Janeiro</span>
+                <span>
+                {
+                    mainContext.cities.filter((cities: any) => { return cities.id === mainContext.currentCity}).map((city: any) => {
+                        return city.title
+                    })
+                }
+                </span>
                 <img src={IconPin} className="location" alt="Location" />
             </button>
         </LocationContainer>

@@ -1,20 +1,17 @@
 import React from "react";
 import { SearchContainer } from './styled';
-import { createBrowserHistory } from 'history';
 import { MainContext } from "../../../Providers/MainProvider";
 
 const Search = () => {
 
-    const mainContext = React.useContext(MainContext);
-
+    const mainContext = React.useContext(MainContext)
+    
     const handleChange = (event: any) => {
-        mainContext.setSearchTerm(event.target.value);
+        mainContext.setSearchTerm(event.target.value)
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const history = createBrowserHistory();
-        history.push(`/search/${mainContext.searchTerm}`);
+        event.preventDefault()
     }
 
 
@@ -30,4 +27,4 @@ const Search = () => {
 
 }
 
-export default Search;
+export default Search

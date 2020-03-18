@@ -11,7 +11,7 @@ function App() {
      <Header />
      <Filter />
      {/* <MoviesList title="Featured Movies" searchTerm=""/> */}
-     <MoviesList title="Featured Movies"/>
+     <MoviesList/>
     </AppContainer>
   );
 }

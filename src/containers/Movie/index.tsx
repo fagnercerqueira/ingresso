@@ -44,7 +44,7 @@ class Movie extends React.Component<MovieProps, MovieState> {
                 {({ results }) => (
                     (results || []).filter((data: any) => {
                       return data['event'].urlKey === this.state.currentMovie;
-                    }).map((data, index) => {
+                    }).map((data: any, index: number) => {
                       console.log('data',data)
                       return <MovieItem data={data['event']} key={index}></MovieItem>
                     })

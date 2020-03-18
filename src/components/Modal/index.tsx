@@ -12,7 +12,7 @@ const MainModal = () => {
     const closeModal = () => {
         mainContext.closeModal()
     }
-    console.log('mainContext',mainContext)
+    
     return (
         <ModalContainer className={mainContext.modalIsOpen ? 'visible' : 'hide'}>
             <button className="close-button" onClick={closeModal}>Close</button>
